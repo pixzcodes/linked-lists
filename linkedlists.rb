@@ -54,11 +54,11 @@ class LinkedList
     # format should be ( value ) -> ( value ) -> ( value ) -> nil
     string = ""
     current_node = @head # make sure we start at head
-    loop do
+    until current_node == nil
       string = string + "( " + current_node.value.to_s + " ) -> " # template
       current_node = current_node.next_node # change to the next node
-      return string + "nil" if current_node == nil # break case
     end
+    return string + "nil"
   end
 end
 
@@ -77,3 +77,6 @@ list.append('Jeff')
 list.append('Dave')
 list.append('Tristin')
 list.append('Jerome')
+
+
+
