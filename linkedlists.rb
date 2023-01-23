@@ -1,24 +1,26 @@
 class LinkedList
+  attr_reader :head, :tail
 
+  def initialize
+    @head = nil
+    @tail = nil
+  end
 
   def append value
     # adds a new node containing value to the end of the list
+    new_node = Node.new(value)
+    @tail.next_node = new_node
+    @tail = new_node
   end
 
   def prepend value
-    # adds a new node containing value to the start of the list
+    # adds a new node containing value to the start of the list 
+    new_node = Node.new(value, @head)
+    @head = new_node
   end
 
   def size 
     # returns the total number of nodes in the list
-  end
-  
-  def head 
-    # returns the first node in the list
-  end
-
-  def tail
-    # returns the last node in the list
   end
 
   def at index
@@ -40,6 +42,7 @@ class LinkedList
   def to_s
     # represents linked list as a string
     # format should be ( value ) -> ( value ) -> ( value ) -> nil
+   
   end
 end
 
@@ -51,4 +54,3 @@ class Node
     @value = value
   end
 end
-
