@@ -47,6 +47,12 @@ class LinkedList
 
   def pop
     # removes the last element from the list
+    previous_tail = @tail # keep previous tail so we can spit it out 
+    new_tail = self.at(self.size - 1) # find second to last node
+    new_tail.next_node = nil 
+    @tail = new_tail
+    previous_tail # spit out old tail as a product of this method
+    # this functionality is similar to actual ruby pop
   end
 
   def contains? value
@@ -87,5 +93,6 @@ list.append('Tristin')
 list.append('Jerome')
 
 p list.to_s
-p list.at(1)
+p list.pop
+p list.to_s
 
