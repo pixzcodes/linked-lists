@@ -19,6 +19,7 @@ class LinkedList
   def prepend value
     # adds a new node containing value to the start of the list 
     new_node = Node.new(value, @head)
+    @tail = new_node if @tail == nil
     @head = new_node
   end
 
