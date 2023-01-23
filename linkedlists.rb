@@ -36,6 +36,13 @@ class LinkedList
 
   def at index
     # returns the node at the given index
+    current_node = @head
+    counter = index
+    until counter <= 1
+      counter -= 1
+      current_node = current_node.next_node
+    end
+    current_node
   end
 
   def pop
@@ -79,5 +86,6 @@ list.append('Dave')
 list.append('Tristin')
 list.append('Jerome')
 
-
+p list.to_s
+p list.at(1)
 
