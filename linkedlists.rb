@@ -67,6 +67,14 @@ class LinkedList
 
   def find value
     # returns the index of the node containing value, or nil if not found
+    index = 0
+    current_node = @head
+    until current_node == nil
+      index += 1
+      return index if current_node.value == value
+      current_node = current_node.next_node
+    end
+    nil
   end
 
   def to_s
@@ -99,5 +107,9 @@ list.append('Tristin')
 list.append('Jerome')
 
 p list.to_s
-p list.contains?('Jerome')
-p list.contains?('Daphane')
+p list.find('Dave')
+p list.find('Jerome')
+p list.find('John')
+p list.find('Jeff')
+
+
