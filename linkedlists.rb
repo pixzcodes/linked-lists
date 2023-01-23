@@ -1,4 +1,6 @@
 class LinkedList
+  # made more sense to have the head and tail as attr items
+  # so that i can just change them at will through out the class methods
   attr_reader :head, :tail
 
   def initialize
@@ -10,7 +12,7 @@ class LinkedList
     # adds a new node containing value to the end of the list
     new_node = Node.new(value)
     @tail.next_node = new_node unless @tail == nil # we dont want this to run unless there is no tail
-    @head = new_node if @head == nil # so that we have a head in case of a new list
+    @head = new_node if @head == nil # making sure we have a head in the case of a new list
     @tail = new_node
   end
 
@@ -22,6 +24,13 @@ class LinkedList
 
   def size 
     # returns the total number of nodes in the list
+    current_node = @head 
+    counter = 0
+    until current_node == nil
+      counter += 1
+      current_node = current_node.next_node
+    end
+    counter
   end
 
   def at index
@@ -44,11 +53,11 @@ class LinkedList
     # represents linked list as a string
     # format should be ( value ) -> ( value ) -> ( value ) -> nil
     string = ""
-    current_node = @head
+    current_node = @head # make sure we start at head
     loop do
-      string = string + "( " + current_node.value.to_s + " ) -> "
-      current_node = current_node.next_node
-      return string + "nil" if current_node == nil
+      string = string + "( " + current_node.value.to_s + " ) -> " # template
+      current_node = current_node.next_node # change to the next node
+      return string + "nil" if current_node == nil # break case
     end
   end
 end
@@ -62,7 +71,9 @@ class Node
   end
 end
 
+# - - - TESTING SITE - - - #
 list = LinkedList.new
 list.append('Jeff')
 list.append('Dave')
-p list.to_s
+list.append('Tristin')
+list.append('Jerome')
