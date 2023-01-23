@@ -57,6 +57,12 @@ class LinkedList
 
   def contains? value
     # returns true if the passed in value is in the list and otherwise returns false
+    current_node = @head
+    until current_node == nil
+      return true if current_node.value == value
+      current_node = current_node.next_node
+    end
+    false
   end
 
   def find value
@@ -93,6 +99,5 @@ list.append('Tristin')
 list.append('Jerome')
 
 p list.to_s
-p list.pop
-p list.to_s
-
+p list.contains?('Jerome')
+p list.contains?('Daphane')
